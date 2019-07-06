@@ -8,30 +8,24 @@
                     <table id="myTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Indice</th>
-                                <th>id</th>
-                                <th>nombre</th>
-                                <th>direccion</th>
-                                <th>tlf</th>
+                                <th>Cod-Producto</th>
+                                <th>Id-Tienda</th>
+                                <th>Cod-Stock</th>
                                 <th>evento</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Indice</th>
-                                <th>id</th>
-                                <th>nombre</th>
-                                <th>direccion</th>
-                                <th>tlf</th>
+                                <th>Cod-Producto</th>
+                                <th>Id-Tienda</th>
+                                <th>Cod-Stock</th>
                                 <th>evento</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr *ngFor="let inventario of _inventarioServi.inventarios; let indice = index">
-                                <td>{{indice}}</td>
-                                <td>{{inventario.id_producto}}</td>
+                            <tr *ngFor="let inventario of inventariosBD | async; let indice = index">
+                                <td>{{inventario.cod_prod}}</td>
                                 <td>{{inventario.id_tienda}}</td>
-                                <td>{{inventario.producto}}</td>
                                 <td>{{inventario.stock}}</td>
                                 <td>EliMINAR | ACTUALIZAR</td>
                             </tr>

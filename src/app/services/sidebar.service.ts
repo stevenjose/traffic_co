@@ -11,8 +11,10 @@ export class SidebarService {
       submenu: [
         { titulo:  'Proveedores', url: '/proveedores' },
         { titulo : 'Productos', url: '/productos' },
+        { titulo : '--Crear-Producto', url: '/newProducto' },
         { titulo : 'Tiendas', url: '/tiendas' },
-        { titulo : 'Inventario', url: '/inventario' }
+        { titulo : 'Inventario', url: '/inventario' },
+        { titulo : '--Crear-Inventario', url: '/newInventario' },
       ]
     }
   ];

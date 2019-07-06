@@ -15,7 +15,6 @@ export class InventarioService {
 
   constructor(private http: HttpClient) {
     this.getInventario();
-    this.createInventario();
    }
 
   getInventario() {
@@ -28,24 +27,6 @@ export class InventarioService {
     });
     });
 
-  }
-
-  createInventario() {
-    console.log('Crear Inventario');
-    const data = {
-      id_producto: '004',
-      id_tienda: '002',
-      producto: 'Lenovo',
-      stock: '250'
-    }
-
-    this.http.post('https://traffic-ec8eb.firebaseio.com/inventario' + '/post', data)
-    .subscribe( resp => {
-      if(resp){
-        console.log(resp);
-      }
-    });
-    console.log('Creado');
   }
 
 

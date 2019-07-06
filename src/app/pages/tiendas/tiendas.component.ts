@@ -10,7 +10,7 @@ import 'datatables.net';
 })
 export class TiendasComponent implements OnInit {
   public title = 'Table Tiendas';
-
+  public tableWidget: any;
   // tslint:disable-next-line:variable-name
   constructor(public _tiendasServi: TiendaService) { }
 

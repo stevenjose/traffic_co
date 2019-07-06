@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PAGES_ROUTE } from './pages.routes';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { TiendasComponent } from './tiendas/tiendas.component';
 import { InventarioComponent } from './inventario/inventario.component';
+import { NewInventarioComponent } from './inventario/new-inventario.component';
+import { NewProductosComponent } from './productos/new-productos.component';
+import { UpdateInventarioComponent } from './inventario/update-inventario.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { InventarioComponent } from './inventario/inventario.component';
     ProductosComponent,
     ProveedoresComponent,
     TiendasComponent,
-    InventarioComponent
+    InventarioComponent,
+    NewInventarioComponent,
+    NewProductosComponent,
+    UpdateInventarioComponent
   ],
   exports: [
     PagesComponent,
@@ -34,6 +40,7 @@ import { InventarioComponent } from './inventario/inventario.component';
     SharedModule,
     PAGES_ROUTE,
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     CommonModule
   ]

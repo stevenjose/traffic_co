@@ -3,8 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyBWcl9UoY--zKD_STqTeevTGyVuFYUp2l4',
+    authDomain: 'traffic-ec8eb.firebaseapp.com',
+    databaseURL: 'https://traffic-ec8eb.firebaseio.com',
+    projectId: 'traffic-ec8eb',
+    storageBucket: '787405842068',
+    messagingSenderId: '1:787405842068:web:bbdf027bf8e500e6'
+  }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
@@ -14,3 +23,15 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+  // Your web app's Firebase configuration
+/*   var firebaseConfig = {
+    apiKey: "AIzaSyBWcl9UoY--zKD_STqTeevTGyVuFYUp2l4",
+    authDomain: "traffic-ec8eb.firebaseapp.com",
+    databaseURL: "https://traffic-ec8eb.firebaseio.com",
+    projectId: "traffic-ec8eb",
+    storageBucket: "traffic-ec8eb.appspot.com",
+    messagingSenderId: "787405842068",
+    appId: "1:787405842068:web:bbdf027bf8e500e6"
+  };
+ */

@@ -1,0 +1,23 @@
+<form class="form-horizontal form-material" ngNativeValidate [formGroup]="forma" (ngSubmit)="registarInventario()" id="loginform">
+    <h3 class="box-title m-t-40 m-b-0">Crear Inventario</h3><small> </small>
+    <div class="form-group m-t-20">
+        <div class="col-xs-12">
+            <input class="form-control" type="text" formControlName="cod_prod" name="cod_prod" required placeholder="Cod_Producto">
+        </div>
+    </div>
+    <div class="form-group ">
+        <div class="col-xs-12">
+            <input class="form-control" type="text" formControlName="id_tienda" name="id_tienda" required placeholder="Id_Tienda">
+        </div>
+    </div>
+    <div class="form-group ">
+        <div class="col-xs-12">
+            <input class="form-control" type="text" formControlName="stock" name="stock" required placeholder="Stock">
+        </div>
+    </div>
+    <div class="form-group text-center m-t-20">
+        <div class="col-xs-12">
+            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Crear</button>
+        </div>
+    </div>
+</form>

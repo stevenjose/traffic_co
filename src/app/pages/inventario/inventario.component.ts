@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InventarioService } from '../../services/inventario.service';
+import { AngularFirestore} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import * as $ from 'jquery';
 import 'datatables.net';
 
@@ -9,13 +11,17 @@ import 'datatables.net';
   styleUrls: ['./inventario.component.css']
 })
 export class InventarioComponent implements OnInit {
+  public inventariosBD: Observable<any[]>;
+  constructor( public _inventarioServi: InventarioService,
+               public db: AngularFirestore) {
+    //console.log('Inventario');
+    this.inventariosBD = db.collection('inventarios').valueChanges();
 
-  // tslint:disable-next-line:variable-name
-  constructor( public _inventarioServi: InventarioService) { }
+  }
   public title = 'Table Inventario';
   public tableWidget: any;
   ngOnInit() {
-
+    //this.createInventario('');
   }
 
   ngAfterViewInit() {
@@ -33,5 +39,13 @@ export class InventarioComponent implements OnInit {
     });
   }
 
+  createInventario(value){
+    console.log('Crear Inventario');
+    return this.db.collection('inventarios').add({
+      cod_prod: '004',
+      id_tienda: '004',
+      stock: '25'
+    });
+  }
 
 }
