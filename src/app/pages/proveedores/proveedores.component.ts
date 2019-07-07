@@ -1,11 +1,10 @@
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ProveedorService } from '../../services/proveedor.service';
 declare function init_plugins();
 import * as $ from 'jquery';
 import 'datatables.net';
 import Swal from 'sweetalert2';
-import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 declare function init_plugins();
 

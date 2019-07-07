@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { AngularFirestore} from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+declare function init_plugins();
 import * as $ from 'jquery';
 import 'datatables.net';
 import { map } from 'rxjs/operators';
 import { Producto } from '../../models/producto.model';
-declare function init_plugins();
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-productos',
