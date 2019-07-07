@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoService } from '../../services/producto.service';
 import { AngularFirestore} from '@angular/fire/firestore';
-declare function init_plugins();
-import * as $ from 'jquery';
-import 'datatables.net';
 import { map } from 'rxjs/operators';
 import { Producto } from '../../models/producto.model';
 import Swal from 'sweetalert2';
+
+declare function init_plugins();
+
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -14,7 +14,6 @@ import Swal from 'sweetalert2';
 })
 export class ProductosComponent implements OnInit {
   title: string = 'Table Productos';
-  productoServ = ProductoService;
   public tableWidget: any;
   public productosBD: any;
   constructor(public db: AngularFirestore ) {

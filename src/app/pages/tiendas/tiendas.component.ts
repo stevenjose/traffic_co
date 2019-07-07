@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { Tienda } from 'src/app/models/tienda.model';
 import Swal from 'sweetalert2';
 declare function init_plugins();
+
+
 @Component({
   selector: 'app-tiendas',
   templateUrl: './tiendas.component.html',
