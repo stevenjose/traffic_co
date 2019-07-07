@@ -3,31 +3,30 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">{{ title }}</h4>
-                <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
                 <div class="table-responsive m-t-40">
                     <table id="myTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>nombre</th>
-                                <th>direccion</th>
-                                <th>tlf</th>
-                                <th>evento</th>
+                                <th>Nombre</th>
+                                <th>Dirección</th>
+                                <th>Teléfono</th>
+                                <!--  <th>Evento</th> -->
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>nombre</th>
-                                <th>direccion</th>
-                                <th>tlf</th>
-                                <th>evento</th>
+                                <th>Nombre</th>
+                                <th>Dirección</th>
+                                <th>Teléfono</th>
+                                <!--   <th>Evento</th> -->
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr *ngFor="let proveedor of proveedorServ.provedorBD | async;">
+                            <tr *ngFor="let proveedor of provedorBD  | async;">
                                 <td>{{proveedor.nombre}}</td>
                                 <td>{{proveedor.direccion}}</td>
                                 <td>{{proveedor.tlf}}</td>
-                                <td><button class="btn btn-primary" (click)="delete( proveedor.id )"> EliMINAR </button> | <a class="btn btn-success" [routerLink]="['/newProveedor', proveedor.id ]"> Actulizar </a></td>
+                                <!-- <td><button class="btn btn-primary" (click)="delete( proveedor.id )"> EliMINAR </button> | <a class="btn btn-success" [routerLink]="['/newProveedor', proveedor.id ]"> Actulizar </a></td> -->
                             </tr>
                         </tbody>
                     </table>

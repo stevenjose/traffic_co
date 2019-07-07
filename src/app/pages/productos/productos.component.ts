@@ -17,8 +17,7 @@ export class ProductosComponent implements OnInit {
   productoServ = ProductoService;
   public tableWidget: any;
   public productosBD: any;
-  constructor(  public producServ: ProductoService,
-                public db: AngularFirestore ) {
+  constructor(public db: AngularFirestore ) {
 
     //this.productosBD = db.collection('productos').valueChanges();
     this.productosBD = db.collection('productos').snapshotChanges().pipe(
@@ -41,7 +40,7 @@ export class ProductosComponent implements OnInit {
   ngAfterViewInit() {
     setTimeout( (resp =>{
       this.initDatatable();
-    }), 1000);
+    }), 1200);
 
   }
 

@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Tienda } from '../../models/tienda.model';
 import Swal from 'sweetalert2';
+declare function init_plugins();
 
 @Component({
   selector: 'app-new-tiendas',
@@ -46,6 +47,8 @@ export class NewTiendasComponent implements OnInit {
     return this.db.collection('tiendas').doc(documentId).snapshotChanges();
   }
   ngOnInit() {
+    init_plugins();
+    console.log('ngInit');
     this.forma = new FormGroup({
       id: new FormControl(null),
       direccion: new FormControl(null, Validators.required),

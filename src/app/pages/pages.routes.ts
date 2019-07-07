@@ -34,7 +34,7 @@ const pagesRoutes: Routes = [
       {path: 'inventario', component: InventarioComponent},
       {path: 'newInventario', component: NewInventarioComponent},
       {path: 'newInventario/:id', component: NewInventarioComponent, data: { titulo: 'Actualizar Inventario' } },
-      {path: '', redirectTo: '/dasboard', pathMatch: 'full'}
+      {path: '', redirectTo: '/proveedores', pathMatch: 'full'}
     ]
   }
 ];

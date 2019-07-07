@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 import { Tienda } from '../models/tienda.model';
 
 
@@ -11,8 +9,7 @@ import { Tienda } from '../models/tienda.model';
 })
 export class TiendaService {
   tiendasBD: any;
-  constructor(private http: HttpClient,
-              public db: AngularFirestore) {
+  constructor(public db: AngularFirestore) {
               this.getTiendas();
    }
 

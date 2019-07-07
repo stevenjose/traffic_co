@@ -1,37 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { TiendaService } from '../../services/tienda.service';
-import * as $ from 'jquery';
-import 'datatables.net';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Tienda } from 'src/app/models/tienda.model';
 import Swal from 'sweetalert2';
-
+declare function init_plugins();
 @Component({
   selector: 'app-tiendas',
   templateUrl: './tiendas.component.html',
   styleUrls: ['./tiendas.component.css']
 })
+
 export class TiendasComponent implements OnInit {
+
   public title = 'Table Tiendas';
   public tableWidget: any;
   public tiendasBD: any;
-  // tslint:disable-next-line:variable-name
-  constructor(public _tiendasServi: TiendaService,
-              public db: AngularFirestore) { }
+
+  constructor(public db: AngularFirestore) {
+    this.tiendasBD = this.db.collection('tiendas').snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Tienda;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      }));
+   }
 
 
   ngOnInit() {
-
+    init_plugins();
+    console.log('ngInit');
   }
+  // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
-    setTimeout( (resp =>{
+    setTimeout( (resp => {
       this.initDatatable();
-    }), 1000);
+    }), 1200);
 
   }
 
-  initDatatable(){
+  initDatatable() {
     console.log('Init Table');
     let exampleId: any = $('#myTable');
     this.tableWidget = exampleId.DataTable({
@@ -43,7 +52,7 @@ export class TiendasComponent implements OnInit {
   delete(id) {
     Swal.fire({
       title: 'Esta seguro?',
-      text: "Quiere eliminar el registro!",
+      text: 'Quiere eliminar el registro!',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -56,7 +65,7 @@ export class TiendasComponent implements OnInit {
           'Eliminado!',
           'El regsitro de se ha eliminado.',
           'success'
-        )
+        );
       }
     });
   }

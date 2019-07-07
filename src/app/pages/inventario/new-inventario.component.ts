@@ -4,6 +4,8 @@ import { AngularFirestore} from '@angular/fire/firestore';
 import { Inventario } from '../../models/inventario.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Tienda } from '../../models/tienda.model';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-inventario',
@@ -15,6 +17,7 @@ export class NewInventarioComponent implements OnInit {
   public forma: FormGroup;
   public inventariosBD: any;
   public document_id;
+  public tiendasBD: any;
 
   constructor(  public db: AngularFirestore,
                 public router: Router,
@@ -26,6 +29,17 @@ export class NewInventarioComponent implements OnInit {
           this.cargarInventario( id );
       }
     });
+
+
+
+      this.tiendasBD = db.collection('tiendas').snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Tienda;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      }));
 
   }
 

@@ -16,7 +16,7 @@ export class SidebarService {
         { titulo : 'Tiendas', url: '/tiendas' },
         { titulo : '--Crear-Tienda', url: '/newTiendas' },
         { titulo : 'Inventario', url: '/inventario' },
-        { titulo : '--Crear-Inventario', url: '/newInventario' },
+        { titulo : '--Crear-Inventario', url: '/newInventario' }
       ]
     }
   ];

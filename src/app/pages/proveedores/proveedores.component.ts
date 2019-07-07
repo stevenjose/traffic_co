@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ProveedorService } from '../../services/proveedor.service';
 declare function init_plugins();
 import * as $ from 'jquery';
 import 'datatables.net';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
-declare function init_plugins();
+import { map } from 'rxjs/operators';
+import { Proveedor } from 'src/app/models/proveedor.model';
 
 @Component({
   selector: 'app-proveedores',
@@ -16,23 +16,32 @@ declare function init_plugins();
 export class ProveedoresComponent implements OnInit {
   public title: string = 'Table Proveedores';
   public tableWidget: any;
+  public provedorBD: any;
 
-
-  constructor(public proveedorServ: ProveedorService,
-              public db: AngularFirestore,
+  constructor(public db: AngularFirestore,
               public router: Router,
               public activatedRoute: ActivatedRoute) {
 
+              this.provedorBD = this.db.collection('proveedores').snapshotChanges().pipe(
+                  map(actions => {
+                    return actions.map(a => {
+                      const data = a.payload.doc.data() as Proveedor;
+                      const id = a.payload.doc.id;
+                      return { id, ...data };
+                    });
+                  }));
 
-               }
+  }
 
 
 
   ngOnInit() {
     init_plugins();
+    console.log('ngInit');
   }
 
   ngAfterViewInit() {
+    //this.initDatatable();
     setTimeout( (resp =>{
       this.initDatatable();
     }), 1000);
