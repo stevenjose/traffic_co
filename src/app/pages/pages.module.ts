@@ -16,6 +16,7 @@ import { NewInventarioComponent } from './inventario/new-inventario.component';
 import { NewProductosComponent } from './productos/new-productos.component';
 import { UpdateInventarioComponent } from './inventario/update-inventario.component';
 import { NewProveedoresComponent } from './proveedores/new-proveedores.component';
+import { NewTiendasComponent } from './tiendas/new-tiendas.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NewProveedoresComponent } from './proveedores/new-proveedores.component
     NewInventarioComponent,
     NewProductosComponent,
     UpdateInventarioComponent,
-    NewProveedoresComponent
+    NewProveedoresComponent,
+    NewTiendasComponent
   ],
   exports: [
     PagesComponent,

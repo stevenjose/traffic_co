@@ -8,8 +8,6 @@
                     <table id="myTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Indice</th>
-                                <th>id</th>
                                 <th>nombre</th>
                                 <th>direccion</th>
                                 <th>tlf</th>
@@ -18,8 +16,6 @@
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Indice</th>
-                                <th>id</th>
                                 <th>nombre</th>
                                 <th>direccion</th>
                                 <th>tlf</th>
@@ -27,13 +23,11 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr *ngFor="let tienda of _tiendasServi.tienda; let indice = index">
-                                <td>{{indice}}</td>
-                                <td>{{tienda.id}}</td>
-                                <td>{{tienda.nombre}}</td>
-                                <td>{{tienda.direccion}}</td>
-                                <td>{{tienda.tlf}}</td>
-                                <td>EliMINAR | ACTUALIZAR</td>
+                            <tr *ngFor="let tienda of _tiendasServi.tiendasBD | async;">
+                                <td>{{ tienda.nombre }}</td>
+                                <td>{{ tienda.direccion }}</td>
+                                <td>{{ tienda.tlf }}</td>
+                                <td><button class="btn btn-primary" (click)="delete( tienda.id )"> EliMINAR </button> | <a class="btn btn-success" [routerLink]="['/newTiendas', tienda.id ]"> Actulizar </a></td>
                             </tr>
                         </tbody>
                     </table>

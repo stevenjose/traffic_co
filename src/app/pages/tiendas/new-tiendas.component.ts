@@ -1,38 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Proveedor } from '../../models/proveedor.model';
-import Swal from 'sweetalert2';
+import { Router, ActivatedRoute  } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Tienda } from '../../models/tienda.model';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-new-proveedores',
-  templateUrl: './new-proveedores.component.html',
-  styleUrls: ['./new-proveedores.component.css']
+  selector: 'app-new-tiendas',
+  templateUrl: './new-tiendas.component.html',
+  styleUrls: ['./new-tiendas.component.css']
 })
-export class NewProveedoresComponent implements OnInit {
+export class NewTiendasComponent implements OnInit {
   public forma: FormGroup;
+  public tiendasBD: any;
   public document_id;
-  public proveedorBD: any;
+
   constructor(public db: AngularFirestore,
               public router: Router,
-              public activatedRoute: ActivatedRoute) {
-
+              public activatedRoute: ActivatedRoute)
+  {
     activatedRoute.params.subscribe( params => {
       let id = params['id'];
       if ( id ) {
           console.log(' id ' + id);
-          this.cargarProveedor( id );
+          this.cargarTienda( id );
       }
     });
 
+  }
 
-   }
-
-   cargarProveedor( id ){
+  cargarTienda( id ){
     console.log('id ' + id);
     this.document_id = id;
-    this.proveedorBD = this.getProveedor(id).subscribe( (resp: any) => {
+    this.tiendasBD = this.getTienda(id).subscribe( (resp: any) => {
       console.log('Cargando Valores' + resp.payload.data().nombre);
       this.forma.setValue({
           id,
@@ -42,8 +42,8 @@ export class NewProveedoresComponent implements OnInit {
         });
     });
   }
-  public getProveedor(documentId: string) {
-    return this.db.collection('proveedores').doc(documentId).snapshotChanges();
+  public getTienda(documentId: string) {
+    return this.db.collection('tiendas').doc(documentId).snapshotChanges();
   }
   ngOnInit() {
     this.forma = new FormGroup({
@@ -54,12 +54,12 @@ export class NewProveedoresComponent implements OnInit {
     });
   }
 
-  registarProveedor() {
+  registarInventario() {
     if ( this.forma.invalid) {
       return;
     }
 
-    let proveedor = new Proveedor(
+    let tienda = new Tienda(
       this.forma.value.direccion,
       this.forma.value.nombre,
       this.forma.value.tlf
@@ -67,7 +67,7 @@ export class NewProveedoresComponent implements OnInit {
 
     if ( this.forma.value.id ) {
       console.log(this.forma.value.id + 'Id');
-      this.updateTienda(proveedor , this.forma.value.id).then(
+      this.updateTienda(tienda , this.forma.value.id).then(
         resp => {
           Swal.fire({
             type: 'success',
@@ -75,28 +75,31 @@ export class NewProveedoresComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           });
-          this.router.navigate(['/proveedores']);
+          this.router.navigate(['/tiendas']);
         }
       );
 
     }else{
-      if (this.createProveedor( proveedor )){
-        this.router.navigate(['/proveedores']);
+      if (this.createTienda( tienda )){
+        this.router.navigate(['/tiendas']);
       }
     }
+
+
   }
 
-  updateTienda(value: Proveedor, id){
-    //console.log('cod_prod ' + id );
-    return this.db.collection('proveedores').doc(id).set({
+  updateTienda(value: Tienda, id ) {
+    console.log('cod_prod ' + id );
+    return this.db.collection('tiendas').doc(id).set({
       direccion: value.direccion,
       nombre: value.nombre,
       tlf: value.tlf
     });
   }
 
-  createProveedor(value: Proveedor) {
-    return this.db.collection('proveedores').add({
+  createTienda(value: Tienda) {
+
+    return this.db.collection('tiendas').add({
       direccion: value.direccion,
       nombre: value.nombre,
       tlf: value.tlf

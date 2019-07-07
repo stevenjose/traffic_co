@@ -30,7 +30,7 @@
                                 <td>{{producto.cod}}</td>
                                 <td>{{producto.categoria}}</td>
                                 <td>{{producto.titulo}}</td>
-                                <td><button (click)="delete( producto.id )"> EliMINAR </button> | ACTUALIZAR</td>
+                                <td><button class="btn btn-primary" (click)="delete( producto.id )"> EliMINAR </button> | <a class="btn btn-success" [routerLink]="['/newProducto', producto.id ]"> Actulizar </a></td>
                             </tr>
                         </tbody>
                     </table>

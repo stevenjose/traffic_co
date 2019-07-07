@@ -10,6 +10,8 @@ import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { TiendasComponent } from './tiendas/tiendas.component';
 import { InventarioComponent } from './inventario/inventario.component';
 import { NewInventarioComponent } from './inventario/new-inventario.component';
+import { NewTiendasComponent } from './tiendas/new-tiendas.component';
+import { NewProveedoresComponent } from './proveedores/new-proveedores.component';
 
 
 const pagesRoutes: Routes = [
@@ -24,7 +26,11 @@ const pagesRoutes: Routes = [
       {path: 'newProducto', component: NewProductosComponent},
       {path: 'newProducto/:id', component: NewProductosComponent, data: { titulo: 'Actualizar Producto' } },
       {path: 'proveedores', component: ProveedoresComponent},
+      {path: 'newProveedor/:id', component: NewProveedoresComponent, data: { titulo: 'Actualizar Proveedor' } },
+      {path: 'newProveedor', component: NewProveedoresComponent, data: { titulo: 'Crear Proveedor' } },
       {path: 'tiendas', component: TiendasComponent},
+      {path: 'newTiendas', component: NewTiendasComponent, data: { titulo: 'Crear Tienda' } },
+      {path: 'newTiendas/:id', component: NewTiendasComponent, data: { titulo: 'Actualizar Tienda' } },
       {path: 'inventario', component: InventarioComponent},
       {path: 'newInventario', component: NewInventarioComponent},
       {path: 'newInventario/:id', component: NewInventarioComponent, data: { titulo: 'Actualizar Inventario' } },

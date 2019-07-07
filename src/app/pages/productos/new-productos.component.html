@@ -1,5 +1,6 @@
 <form class="form-horizontal form-material" ngNativeValidate [formGroup]="forma" (ngSubmit)="registarProducto()" id="loginform">
     <h3 class="box-title m-t-40 m-b-0">Crear Producto</h3><small> </small>
+    <input type="hidden" name="document_id" formControlName="id" value="{{document_id}}">
     <div class="form-group m-t-20">
         <div class="col-xs-12">
             <input class="form-control" type="text" formControlName="cod" name="cod" required placeholder="Cod_Producto">
@@ -17,7 +18,7 @@
     </div>
     <div class="form-group text-center m-t-20">
         <div class="col-xs-12">
-            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Crear</button>
+            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Guardar</button>
         </div>
     </div>
 </form>
