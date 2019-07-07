@@ -27,7 +27,7 @@
                                 <td>{{inventario.cod_prod}}</td>
                                 <td>{{inventario.id_tienda}}</td>
                                 <td>{{inventario.stock}}</td>
-                                <td>EliMINAR | ACTUALIZAR</td>
+                                <td><button class="btn btn-primary" (click)="delete(inventario.id)"> EliMINAR </button> | <a class="btn btn-success" [routerLink]="['/newInventario', inventario.id ]"> Actulizar </a></td>
                             </tr>
                         </tbody>
                     </table>

@@ -22,10 +22,12 @@ const pagesRoutes: Routes = [
       {path: 'graficas1', component: Graficas1Component},
       {path: 'productos', component: ProductosComponent},
       {path: 'newProducto', component: NewProductosComponent},
+      {path: 'newProducto/:id', component: NewProductosComponent, data: { titulo: 'Actualizar Producto' } },
       {path: 'proveedores', component: ProveedoresComponent},
       {path: 'tiendas', component: TiendasComponent},
       {path: 'inventario', component: InventarioComponent},
       {path: 'newInventario', component: NewInventarioComponent},
+      {path: 'newInventario/:id', component: NewInventarioComponent, data: { titulo: 'Actualizar Inventario' } },
       {path: '', redirectTo: '/dasboard', pathMatch: 'full'}
     ]
   }

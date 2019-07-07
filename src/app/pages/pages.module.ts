@@ -15,6 +15,7 @@ import { InventarioComponent } from './inventario/inventario.component';
 import { NewInventarioComponent } from './inventario/new-inventario.component';
 import { NewProductosComponent } from './productos/new-productos.component';
 import { UpdateInventarioComponent } from './inventario/update-inventario.component';
+import { NewProveedoresComponent } from './proveedores/new-proveedores.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UpdateInventarioComponent } from './inventario/update-inventario.compon
     InventarioComponent,
     NewInventarioComponent,
     NewProductosComponent,
-    UpdateInventarioComponent
+    UpdateInventarioComponent,
+    NewProveedoresComponent
   ],
   exports: [
     PagesComponent,

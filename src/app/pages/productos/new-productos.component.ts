@@ -12,7 +12,9 @@ import { Producto } from '../../models/producto.model';
   styleUrls: ['./new-productos.component.css']
 })
 export class NewProductosComponent implements OnInit {
+
   public forma: FormGroup;
+
   constructor( public db: AngularFirestore, public router: Router ) { }
 
   ngOnInit() {
