@@ -17,6 +17,7 @@ import { NewProductosComponent } from './productos/new-productos.component';
 import { UpdateInventarioComponent } from './inventario/update-inventario.component';
 import { NewProveedoresComponent } from './proveedores/new-proveedores.component';
 import { NewTiendasComponent } from './tiendas/new-tiendas.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NewTiendasComponent } from './tiendas/new-tiendas.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
-    CommonModule
+    CommonModule,
+    DataTablesModule
   ]
 })
 

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-declare function init_plugins();
+//declare function init_plugins();
 import * as $ from 'jquery';
-import 'datatables.net';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Proveedor } from 'src/app/models/proveedor.model';
+import { Subject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-proveedores',
@@ -15,14 +15,15 @@ import { Proveedor } from 'src/app/models/proveedor.model';
 })
 export class ProveedoresComponent implements OnInit {
   public title: string = 'Table Proveedores';
-  public tableWidget: any;
-  public provedorBD: any;
+  dtOptions: DataTables.Settings = {};
+  tableWidget: any;
+  public provedorBD: Observable<any>;
+  dtTrigger: Subject<any> = new Subject();
 
   constructor(public db: AngularFirestore,
               public router: Router,
               public activatedRoute: ActivatedRoute) {
-
-              this.provedorBD = this.db.collection('proveedores').snapshotChanges().pipe(
+                this.provedorBD = this.db.collection('proveedores').snapshotChanges().pipe(
                   map(actions => {
                     return actions.map(a => {
                       const data = a.payload.doc.data() as Proveedor;
@@ -30,29 +31,32 @@ export class ProveedoresComponent implements OnInit {
                       return { id, ...data };
                     });
                   }));
+                  this.provedorBD.subscribe( async (resp) =>{
+                    console.log(resp);
+                    if(resp.id != ""){
+                      setTimeout( resp => {
+                        this.initDatatable();
+                      },200) ;
+                    }
+                  });
 
   }
 
 
 
   ngOnInit() {
-    init_plugins();
-    console.log('ngInit');
+    console.log('ngOnInit -');
   }
 
   ngAfterViewInit() {
-    //this.initDatatable();
-    setTimeout( (resp =>{
-      this.initDatatable();
-    }), 1000);
+
   }
 
   initDatatable(){
     console.log('Init Table');
     let exampleId: any = $('#myTable');
-    this.tableWidget = exampleId.DataTable({
-      select: true
-    });
+
+    this.tableWidget = exampleId.DataTable();
   }
 
   delete(id) {

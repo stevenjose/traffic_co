@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import 'datatables.net';
-declare function init_plugins();
+//declare function init_plugins();
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
@@ -12,7 +12,7 @@ export class PagesComponent implements OnInit {
   public tableWidget: any;
 
   ngOnInit() {
-    init_plugins();
+    //init_plugins();
   }
 
 }

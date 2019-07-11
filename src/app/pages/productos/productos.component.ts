@@ -4,8 +4,6 @@ import { map } from 'rxjs/operators';
 import { Producto } from '../../models/producto.model';
 import Swal from 'sweetalert2';
 
-declare function init_plugins();
-
 
 @Component({
   selector: 'app-productos',
@@ -33,7 +31,7 @@ export class ProductosComponent implements OnInit {
   }
 
   ngOnInit() {
-    init_plugins();
+    //init_plugins();
   }
 
   ngAfterViewInit() {

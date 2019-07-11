@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Tienda } from 'src/app/models/tienda.model';
 import Swal from 'sweetalert2';
-declare function init_plugins();
+//declare function init_plugins();
 
 
 @Component({
@@ -31,7 +31,7 @@ export class TiendasComponent implements OnInit {
 
 
   ngOnInit() {
-    init_plugins();
+    //init_plugins();
     console.log('ngInit');
   }
   // tslint:disable-next-line:use-life-cycle-interface
